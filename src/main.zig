@@ -5,14 +5,9 @@ const synths = @import("synths");
 const allocator = std.heap.page_allocator;
 const Wave = lightmix.Wave;
 
-const c_2: f32 = 65.406;
-const c_3: f32 = 130.813;
-const c_4: f32 = 261.626;
-const c_5: f32 = 523.251;
-
 pub fn main() !void {
-    const result: Wave = synths.SynthSounds.Sine.generate(.{
-        .frequency = c_4,
+    const result: Wave = synths.SynthSounds.Mika.generate(.{
+        .frequency = 110.0,
         .amplitude = 1.0,
         .length = 44100,
         .allocator = allocator,

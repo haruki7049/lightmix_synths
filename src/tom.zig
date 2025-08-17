@@ -15,7 +15,7 @@ pub const GenerateOptions = struct {
 
 pub fn generate(options: GenerateOptions) Wave {
     const sample_rate: f32 = @floatFromInt(options.sample_rate);
-    const data: []const f32 = generate_base_data(options.frequency, options.amplitude, options.length, sample_rate, options.allocator);
+    const data: []const f32 = generate_data(options.frequency, options.amplitude, options.length, sample_rate, options.allocator);
     defer options.allocator.free(data);
 
     const result: Wave = Wave.init(data, options.allocator, .{
@@ -28,7 +28,7 @@ pub fn generate(options: GenerateOptions) Wave {
 }
 
 
-fn generate_base_data(frequency: f32, amplitude: f32, length: usize, sample_rate: f32, allocator: std.mem.Allocator) []const f32 {
+fn generate_data(frequency: f32, amplitude: f32, length: usize, sample_rate: f32, allocator: std.mem.Allocator) []const f32 {
     var result: []f32 = allocator.alloc(f32, length) catch |err| {
         std.debug.print("{any}\n", .{err});
         @panic("PANIC");

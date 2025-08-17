@@ -6,8 +6,8 @@ const allocator = std.heap.page_allocator;
 const Wave = lightmix.Wave;
 
 pub fn main() !void {
-    const result: Wave = synths.SynthSounds.Mika.generate(.{
-        .frequency = 110.0,
+    const result: Wave = synths.Tom.generate(.{
+        .frequency = 220.0,
         .amplitude = 1.0,
         .length = 44100,
         .allocator = allocator,

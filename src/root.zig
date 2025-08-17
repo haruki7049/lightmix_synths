@@ -1,6 +1,6 @@
 const std = @import("std");
 
-pub const Keyboard = @import("./keyboard.zig");
-pub const Guitar = @import("./guitar.zig");
-pub const SynthSounds = @import("./synth_sounds.zig");
-pub const Drum = @import("./drum.zig");
+pub const BasicSynths = @import("./basic_synths.zig");
+pub const Mika = @import("./mika.zig");
+pub const Orga = @import("./orga.zig");
+pub const Tom = @import("./tom.zig");

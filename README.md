@@ -1,1 +1,1 @@
-# synths
+# lightmix_synths

@@ -1,3 +1,3 @@
-pub const Sine = @import("./basic_synths/sine.zig");
-pub const Square = @import("./basic_synths/square.zig");
-pub const Soundless = @import("./basic_synths/soundless.zig");
+pub const Sine = @import("./basic/sine.zig");
+pub const Square = @import("./basic/square.zig");
+pub const Soundless = @import("./basic/soundless.zig");

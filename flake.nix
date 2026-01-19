@@ -30,8 +30,8 @@
             # Nix
             programs.nixfmt.enable = true;
 
-            # Rust
-            programs.rustfmt.enable = true;
+            # Zig
+            programs.zig.enable = true;
 
             # TOML
             programs.taplo.enable = true;
@@ -50,10 +50,7 @@
           devShells.default = pkgs.mkShell {
             nativeBuildInputs = [
               # Compiler
-              pkgs.zig_0_14
-
-              # C header manager
-              pkgs.pkg-config
+              pkgs.zig_0_15
 
               # LSP
               pkgs.nil
@@ -61,11 +58,6 @@
 
               # Music Player
               pkgs.sox # Use this command as: `play result.wav`
-            ];
-
-            buildInputs = [
-              pkgs.portaudio
-              pkgs.libsndfile
             ];
           };
         };

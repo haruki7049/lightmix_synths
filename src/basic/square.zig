@@ -55,6 +55,7 @@ fn generate_samples(
 }
 
 test "gen" {
+    const test_data = @import("./test_data.zig");
     const allocator = std.testing.allocator;
 
     const square: Wave(f64) = gen(f64, .{
@@ -69,4 +70,6 @@ test "gen" {
         .channels = 1,
     });
     defer square.deinit();
+
+    try std.testing.expectEqualSlices(f64, test_data.Square, square.samples);
 }

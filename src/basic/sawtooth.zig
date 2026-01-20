@@ -1,6 +1,4 @@
-//! English: Sawtooth Wave
-//!
-//! Japanese: のこぎり波
+//! Sawtooth Wave
 
 const std = @import("std");
 const lightmix = @import("lightmix");

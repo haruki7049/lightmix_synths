@@ -1,3 +1,5 @@
+//! Sine Wave
+
 const std = @import("std");
 const lightmix = @import("lightmix");
 const Wave = lightmix.Wave;

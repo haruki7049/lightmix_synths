@@ -1,6 +1,4 @@
-//! English: Square Wave
-//!
-//! Japanese: 矩形波
+//! Square Wave
 
 const std = @import("std");
 const lightmix = @import("lightmix");

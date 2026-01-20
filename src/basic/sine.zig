@@ -17,7 +17,6 @@ pub fn gen(
     options: GenOptions,
 ) Wave(T) {
     const samples: []const T = generate_samples(T, options);
-    defer options.allocator.free(samples);
 
     const result: Wave(T) = Wave(T){
         .samples = samples,
@@ -36,15 +35,34 @@ fn generate_samples(
     const sample_rate: f32 = @floatFromInt(options.sample_rate);
     const radins_per_sec: f32 = options.frequency * 2.0 * std.math.pi;
 
-    var result: []f32 = options.allocator.alloc(f32, options.length) catch |err| {
+    var result: []T = options.allocator.alloc(T, options.length) catch |err| {
         std.debug.print("{any}\n", .{err});
         @panic("PANIC");
     };
     var i: usize = 0;
 
     while (i < result.len) : (i += 1) {
-        result[i] = std.math.sin(@as(f32, @floatFromInt(i)) * radins_per_sec / sample_rate) * options.amplitude;
+        result[i] = std.math.sin(@as(T, @floatFromInt(i)) * radins_per_sec / sample_rate) * options.amplitude;
     }
 
     return result;
+}
+
+test "gen" {
+    const test_data = @import("./test_data.zig");
+    const allocator = std.testing.allocator;
+
+    const sine: Wave(f128) = gen(f128, .{
+        .frequency = 440.0,
+        .amplitude = 1.0,
+        .length = 44100,
+
+        .allocator = allocator,
+
+        .sample_rate = 44100,
+        .channels = 1,
+    });
+    defer sine.deinit();
+
+    try std.testing.expectEqualSlices(f128, test_data.Sine, sine.samples);
 }

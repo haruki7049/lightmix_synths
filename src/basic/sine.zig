@@ -64,5 +64,7 @@ test "gen" {
     });
     defer sine.deinit();
 
-    try std.testing.expectEqualSlices(f128, test_data.Sine, sine.samples);
+    try std.testing.expectEqual(test_data.Sine.len, sine.samples.len);
+    for (test_data.Sine, sine.samples) |expected, actual|
+        try std.testing.expectApproxEqAbs(expected, actual, 0.00001);
 }

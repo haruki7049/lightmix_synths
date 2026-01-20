@@ -35,8 +35,8 @@ pub fn build(b: *std.Build) !void {
     const test_step = b.step("test", "Run unit tests");
     test_step.dependOn(&run_unit_tests.step);
 
-    // build-examples step
-    const build_examples_step = b.step("build-examples", "Build all examples' Wave file");
+    // examples step
+    const examples_step = b.step("examples", "Build all examples' Wave file");
     const paths: []const []const u8 = &.{"examples/ukulele.zig"};
     for (paths) |path| {
         const example_mod = b.createModule(.{
@@ -54,6 +54,6 @@ pub fn build(b: *std.Build) !void {
             .func_name = "gen",
             .wave = .{ .bits = 16, .format_code = .pcm, .name = filename },
         });
-        build_examples_step.dependOn(wave_step);
+        examples_step.dependOn(wave_step);
     }
 }

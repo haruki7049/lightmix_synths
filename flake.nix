@@ -23,6 +23,21 @@
 
       perSystem =
         { pkgs, lib, ... }:
+        let
+          lightmix_synths = pkgs.stdenv.mkDerivation {
+            name = "lightmix_synths";
+            src = lib.cleanSource ./.;
+            doCheck = true;
+
+            nativeBuildInputs = [
+              pkgs.zig_0_15.hook
+            ];
+
+            postPatch = ''
+              ln -s ${pkgs.callPackage ./.deps.nix { }} $ZIG_GLOBAL_CACHE_DIR/p
+            '';
+          };
+        in
         {
           treefmt = {
             projectRootFile = ".git/config";
@@ -32,6 +47,7 @@
 
             # Zig
             programs.zig.enable = true;
+            settings.formatter.zig.command = lib.getExe pkgs.zig_0_15;
 
             # TOML
             programs.taplo.enable = true;
@@ -47,6 +63,15 @@
             programs.shfmt.enable = true;
           };
 
+          packages = {
+            inherit lightmix_synths;
+            default = lightmix_synths;
+          };
+
+          checks = {
+            inherit lightmix_synths;
+          };
+
           devShells.default = pkgs.mkShell {
             nativeBuildInputs = [
               # Compiler
@@ -58,6 +83,9 @@
 
               # Music Player
               pkgs.sox # Use this command as: `play result.wav`
+
+              # Zon2nix
+              pkgs.zon2nix
             ];
           };
         };

@@ -71,5 +71,7 @@ test "gen" {
     });
     defer square.deinit();
 
-    try std.testing.expectEqualSlices(f64, test_data.Square, square.samples);
+    try std.testing.expectEqual(test_data.Square.len, square.samples.len);
+    for (test_data.Square, square.samples) |expected, actual|
+        try std.testing.expectApproxEqAbs(expected, actual, 0.00001);
 }

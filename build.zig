@@ -37,10 +37,18 @@ pub fn build(b: *std.Build) !void {
 
     // examples step
     const examples_step = b.step("examples", "Build all examples' Wave file");
-    const paths: []const []const u8 = &.{"examples/ukulele.zig"};
-    for (paths) |path| {
+
+    var dir = try std.fs.cwd().openDir("examples", .{ .iterate = true });
+    defer dir.close();
+    var walker = try dir.walk(b.allocator);
+    defer walker.deinit();
+
+    while (try walker.next()) |entry| {
+        const p: []const u8 = try std.fs.path.join(b.allocator, &.{ "examples", entry.path });
+        const filename: []const u8 = try std.mem.concat(b.allocator, u8, &.{ entry.path, ".wav" });
+
         const example_mod = b.createModule(.{
-            .root_source_file = b.path(path),
+            .root_source_file = b.path(p),
             .target = target,
             .optimize = optimize,
             .imports = &.{
@@ -48,7 +56,6 @@ pub fn build(b: *std.Build) !void {
                 .{ .name = "lightmix_synths", .module = mod },
             },
         });
-        const filename: []const u8 = "result.wav";
 
         const wave_step = try l.createWave(b, example_mod, .{
             .func_name = "gen",

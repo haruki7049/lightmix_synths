@@ -1,5 +1,5 @@
 .{
-    .name = .synths,
+    .name = .lightmix_synths,
     .version = "0.1.0",
     .fingerprint = 0x249fdde78fa7d74b,
     .minimum_zig_version = "0.15.2",

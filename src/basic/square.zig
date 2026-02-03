@@ -18,8 +18,8 @@ pub const GenOptions = struct {
 pub fn gen(
     comptime T: type,
     options: GenOptions,
-) Wave(T) {
-    const samples: []const T = generate_samples(T, options);
+) !Wave(T) {
+    const samples: []const T = try generate_samples(T, options);
 
     const result: Wave(T) = Wave(T){
         .samples = samples,
@@ -34,14 +34,11 @@ pub fn gen(
 fn generate_samples(
     comptime T: type,
     options: GenOptions,
-) []const T {
+) ![]const T {
     const sample_rate: T = @floatFromInt(options.sample_rate);
     const radins_per_sec: T = options.frequency * (2.0 * std.math.pi);
 
-    var result: []T = options.allocator.alloc(T, options.length) catch |err| {
-        std.debug.print("{any}\n", .{err});
-        @panic("PANIC");
-    };
+    var result: []T = try options.allocator.alloc(T, options.length);
 
     var i: usize = 0;
     while (i < result.len) : (i += 1) {
@@ -56,7 +53,7 @@ test "gen" {
     const test_data = @import("./test_data.zig");
     const allocator = std.testing.allocator;
 
-    const square: Wave(f64) = gen(f64, .{
+    const square: Wave(f64) = try gen(f64, .{
         .frequency = 440.0,
         .amplitude = 1.0,
         .sharpness = 0.5,

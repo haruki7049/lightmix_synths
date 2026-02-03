@@ -38,7 +38,7 @@ pub fn build(b: *std.Build) !void {
     // examples step
     const examples_step = b.step("examples", "Build all examples' Wave file");
 
-    var dir = try std.fs.cwd().openDir("examples", .{ .iterate = true });
+    var dir = try b.build_root.handle.openDir("examples", .{ .iterate = true });
     defer dir.close();
     var walker = try dir.walk(b.allocator);
     defer walker.deinit();

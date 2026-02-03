@@ -16,8 +16,8 @@ pub const GenOptions = struct {
     feedback: f32 = 0.995, // Decay rate
 };
 
-pub fn gen(comptime T: type, options: GenOptions) Wave(T) {
-    const samples = generate_samples(T, options);
+pub fn gen(comptime T: type, options: GenOptions) !Wave(T) {
+    const samples = try generate_samples(T, options);
     return Wave(T){
         .samples = samples,
         .allocator = options.allocator,
@@ -26,13 +26,13 @@ pub fn gen(comptime T: type, options: GenOptions) Wave(T) {
     };
 }
 
-fn generate_samples(comptime T: type, options: GenOptions) []const T {
+fn generate_samples(comptime T: type, options: GenOptions) ![]const T {
     const sample_rate: T = @floatFromInt(options.sample_rate);
     const period_len: usize = @intFromFloat(sample_rate / options.frequency);
-    const result = options.allocator.alloc(T, options.length) catch @panic("Out of memory");
+    const result = try options.allocator.alloc(T, options.length);
 
     // Ring buffer for the delay line
-    var buffer = options.allocator.alloc(T, period_len) catch @panic("Out of memory");
+    var buffer = try options.allocator.alloc(T, period_len);
     defer options.allocator.free(buffer);
 
     var prng = std.Random.DefaultPrng.init(0);
@@ -62,7 +62,7 @@ test "gen" {
     const test_data = @import("./test_data.zig");
     const allocator = std.testing.allocator;
 
-    const karplus_strong: Wave(f64) = gen(f64, .{
+    const karplus_strong: Wave(f64) = try gen(f64, .{
         .frequency = 440.0,
         .amplitude = 1.0,
         .length = 88200,

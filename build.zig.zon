@@ -1,6 +1,6 @@
 .{
     .name = .lightmix_synths,
-    .version = "0.2.0",
+    .version = "0.2.1",
     .fingerprint = 0xa1aaf088c9247e9,
     .minimum_zig_version = "0.15.2",
 

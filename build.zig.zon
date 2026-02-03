@@ -12,6 +12,7 @@
     },
 
     .paths = .{
+        "examples",
         "build.zig",
         "build.zig.zon",
         "src",

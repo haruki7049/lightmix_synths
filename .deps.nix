@@ -8,10 +8,10 @@
 
 linkFarm "zig-packages" [
   {
-    name = "lightmix-0.16.1-SpCovNZSAgB6SIkcskMHbN58ISBkbV5x4-D6kVT2Fr9_";
+    name = "lightmix-0.17.1-SpCovLd-AgBKxwPf1JyqtLzmyNG6TFiJaNES8zFyXCGP";
     path = fetchzip {
-      url = "https://github.com/haruki7049/lightmix/archive/refs/tags/0.16.1.tar.gz";
-      hash = "sha256-6w13Os9jWdn2e1UpbRIlw27555NjBlvHVKa+BMTLEcs=";
+      url = "https://github.com/haruki7049/lightmix/archive/refs/tags/0.17.1.tar.gz";
+      hash = "sha256-j5gBe4sB/pYEqD6L7HE6v/pDHfHa6dxjO2QEfW0ziIM=";
     };
   }
   {
@@ -19,6 +19,20 @@ linkFarm "zig-packages" [
     path = fetchzip {
       url = "https://github.com/haruki7049/RIFF.zig/archive/refs/tags/0.2.1.tar.gz";
       hash = "sha256-qF3iKfj4RL8tLiy7K0MRdKBsuH1MosZu7DHTSmmzpN0=";
+    };
+  }
+  {
+    name = "system_sdk-0.3.0-dev-alwUNnYaaAJAtIdE2fg4NQfDqEKs7QCXy_qYukAOBfmF";
+    path = fetchzip {
+      url = "https://github.com/zig-gamedev/system_sdk/archive/c0dbf11cdc17da5904ea8a17eadc54dee26567ec.tar.gz";
+      hash = "sha256-O3+Z4F58yESes3AMR3yfgqzJjM35BjwxGULgjKgJ6cE=";
+    };
+  }
+  {
+    name = "zaudio-0.11.0-dev-_M-91kHvPwAlW8MCRI4XiTbTeihqB8Zspgiuw-6Gqgdz";
+    path = fetchzip {
+      url = "https://github.com/zig-gamedev/zaudio/archive/bb93ad665b89e302d4515a36b44cb8e73eaf6766.tar.gz";
+      hash = "sha256-iMGK3w/SQ6IxD2vW1x0nwKshhdzNLAsbngx0Vo1Svgc=";
     };
   }
   {

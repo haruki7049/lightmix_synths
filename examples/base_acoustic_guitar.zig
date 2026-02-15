@@ -4,7 +4,7 @@ const lightmix_synths = @import("lightmix_synths");
 
 pub fn gen() !lightmix.Wave(f64) {
     const allocator = std.heap.page_allocator;
-    const result: lightmix.Wave(f64) = lightmix_synths.Basic.KarplusStrong.gen(f64, .{
+    const result: lightmix.Wave(f64) = try lightmix_synths.Basic.KarplusStrong.gen(f64, .{
         .frequency = 110.0,
         .amplitude = 1.0,
         .length = 88200,

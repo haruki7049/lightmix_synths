@@ -35,6 +35,9 @@
 
             postPatch = ''
               ln -s ${pkgs.callPackage ./.deps.nix { }} $ZIG_GLOBAL_CACHE_DIR/p
+
+              # Remove NIX_CFLAGS_COMPILE
+              unset NIX_CFLAGS_COMPILE
             '';
           };
         in
@@ -87,6 +90,11 @@
               # Zon2nix
               pkgs.zon2nix
             ];
+
+            shellHook = ''
+              # Remove NIX_CFLAGS_COMPILE
+              unset NIX_CFLAGS_COMPILE
+            '';
           };
         };
     };

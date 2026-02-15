@@ -57,10 +57,9 @@ pub fn build(b: *std.Build) !void {
             },
         });
 
-        const wave_step = try l.createWave(b, example_mod, .{
-            .func_name = "gen",
+        const wave = try l.addWave(b, example_mod, .{
             .wave = .{ .bits = 16, .format_code = .pcm, .name = filename },
         });
-        examples_step.dependOn(wave_step);
+        examples_step.dependOn(wave.step);
     }
 }

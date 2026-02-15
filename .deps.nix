@@ -8,10 +8,10 @@
 
 linkFarm "zig-packages" [
   {
-    name = "lightmix-0.17.1-SpCovLd-AgBKxwPf1JyqtLzmyNG6TFiJaNES8zFyXCGP";
+    name = "lightmix-0.18.0-SpCovPGBAgDHKZ5GMf9tUxapyf8BdYnp_d4LlPlJ_fUE";
     path = fetchzip {
-      url = "https://github.com/haruki7049/lightmix/archive/refs/tags/0.17.1.tar.gz";
-      hash = "sha256-j5gBe4sB/pYEqD6L7HE6v/pDHfHa6dxjO2QEfW0ziIM=";
+      url = "https://github.com/haruki7049/lightmix/archive/refs/tags/0.18.0.tar.gz";
+      hash = "sha256-cgelxeCLqCq7bR19FvNZfnMbYbKOZhesaIb03yJu3lA=";
     };
   }
   {

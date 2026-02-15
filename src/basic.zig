@@ -1,4 +1,4 @@
-pub const Sine = @import("./basic/sine.zig");
+pub const Sine = @import("lightmix_sine");
 pub const Square = @import("./basic/square.zig");
 pub const Sawtooth = @import("./basic/sawtooth.zig");
 pub const Triangle = @import("./basic/triangle.zig");

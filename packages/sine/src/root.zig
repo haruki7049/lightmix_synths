@@ -14,15 +14,7 @@ pub const GenOptions = struct {
     channels: u16,
 };
 
-pub fn gen_example_wave() !Wave(f128) {
-    var gpa = std.heap.GeneralPurposeAllocator(.{}){};
-    const allocator = gpa.allocator();
-    defer {
-        const leaked = gpa.deinit();
-        if (leaked == .leak)
-            @panic("Memory leak happened");
-    }
-
+pub fn gen_example_wave(allocator: std.mem.Allocator) !Wave(f128) {
     const sample_rate = 44100;
     const channels = 1;
 

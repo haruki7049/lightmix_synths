@@ -7,6 +7,7 @@ pub fn build(b: *std.Build) !void {
 
     // Dependencies
     const lightmix = b.dependency("lightmix", .{});
+    const lightmix_sine = b.dependency("lightmix_sine", .{});
 
     // Modules
     const mod = b.addModule("lightmix_synths", .{
@@ -15,6 +16,7 @@ pub fn build(b: *std.Build) !void {
         .optimize = optimize,
         .imports = &.{
             .{ .name = "lightmix", .module = lightmix.module("lightmix") },
+            .{ .name = "lightmix_sine", .module = lightmix_sine.module("lightmix_sine") },
         },
     });
 

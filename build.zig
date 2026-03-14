@@ -20,7 +20,7 @@ pub fn build(b: *std.Build) !void {
 
     // Install
     const lib = b.addLibrary(.{
-        .name = "lightmix_filters",
+        .name = "lightmix_synths",
         .root_module = mod,
     });
     b.installArtifact(lib);

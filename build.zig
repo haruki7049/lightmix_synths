@@ -58,7 +58,11 @@ pub fn build(b: *std.Build) !void {
         });
 
         const wave = try l.addWave(b, example_mod, .{
-            .wave = .{ .bits = 16, .format_code = .pcm, .name = filename },
+            .format = .{ .wav = .{
+                .bits = 16,
+                .format_code = .pcm,
+                .name = filename,
+            } },
         });
         examples_step.dependOn(wave.step);
     }

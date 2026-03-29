@@ -8,17 +8,17 @@
 
 linkFarm "zig-packages" [
   {
-    name = "lightmix-0.18.2-SpCovB2BAgBqgOySOZ49txugvIEhWKTvMbaDTH-RnXlI";
+    name = "lightmix-0.19.0-SpCovPSVAgCWfVf662-qkzWvbxfr780OEWL3WWdGdrq4";
     path = fetchzip {
-      url = "https://github.com/haruki7049/lightmix/archive/refs/tags/0.18.2.tar.gz";
-      hash = "sha256-H7WncuLrav+/ihnCs/Eq0sjF6Ejuv9UoqJQZP1/xTos=";
+      url = "https://github.com/haruki7049/lightmix/archive/refs/tags/0.19.0.tar.gz";
+      hash = "sha256-KyG3x37wiBTZsN/tckjesnA6OoBMpyS4wL0YMpVv+10=";
     };
   }
   {
-    name = "riff_zig-0.2.1-J7H0A0x-AABK0wyA5y4uQxq5x95-RTPUGIwWd61cBTw7";
+    name = "riff_zig-1.0.0-J7H0A7E6TAAFStkejtsMRsIhfgLMLzf5iYxWgeSFBLJu";
     path = fetchzip {
-      url = "https://github.com/haruki7049/RIFF.zig/archive/refs/tags/0.2.1.tar.gz";
-      hash = "sha256-qF3iKfj4RL8tLiy7K0MRdKBsuH1MosZu7DHTSmmzpN0=";
+      url = "https://github.com/haruki7049/RIFF.zig/archive/refs/tags/1.0.0.tar.gz";
+      hash = "sha256-ELlLnVXNOfI44m9EbnKAsaWMjDKEAP1i0VnIdv1Tq14=";
     };
   }
   {
@@ -36,10 +36,10 @@ linkFarm "zig-packages" [
     };
   }
   {
-    name = "zigggwavvv-0.3.0-iR5xWtfEAAAd1ca3u6kOrPIFzODMgHiUIZQWava6XIwD";
+    name = "zigggwavvv-1.0.0-iR5xWiDEAAD6QVEQLTO2j1OfcisaJgUfwo0hLAJnb6hS";
     path = fetchzip {
-      url = "https://github.com/haruki7049/zigggwavvv/archive/refs/tags/0.3.0.tar.gz";
-      hash = "sha256-NqcDSBngSK+7emPru4bTN/fqsoPA4zg90HkIMYJXygw=";
+      url = "https://github.com/haruki7049/zigggwavvv/archive/refs/tags/1.0.0.tar.gz";
+      hash = "sha256-XBhbXfS7KJlIuchKeTPYoMZrZvaCXuWNX+eWLxkdV0s=";
     };
   }
 ]
